@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Emmanuel Nyong — SAFOCK AI Architect</title>
+  <meta name="description" content="Emmanuel Nyong — Core-Team @ SafockAI. Full-Stack & Automation Specialist creating intelligent workflows, document intelligence, and AI-powered agents.">
+  <style>
+    :root {
+      --accent: #4dd0e1;
+      --accent2: #8a6cff;
+      --bg1: #050b17;
+      --bg2: #020715;
+      --glass: rgba(255,255,255,0.04);
+      --text: #f1f5ff;
+      --muted: rgba(255,255,255,0.72);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(138,108,255,0.12), transparent 30%),
+        radial-gradient(circle at 80% 90%, rgba(77,208,225,0.12), transparent 20%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #041021;
+      font-weight: 800;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+    }
+
+    .brand h1 { margin: 0; font-size: 1.3rem; }
+    .brand p { margin: 5px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover { color: var(--accent); }
+    nav a.cta {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #041021;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background: var(--glass);
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    }
+
+    h2 { margin-top: 0; }
+    p { color: var(--muted); line-height: 1.6; }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      margin-top: 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #041021;
+      font-weight: 700;
+    }
+
+    .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    #projects { margin-top: 40px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: var(--glass);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 16px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 60px rgba(0,0,0,0.6);
+    }
+
+    .thumb {
+      height: 150px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 20px;
+    }
+
+    @media(max-width:900px){
+      .hero { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="avatar">EN</div>
+        <div class="brand">
+          <h1>Emmanuel Nyong</h1>
+          <p>Automation & AI Workflow Architect</p>
+        </div>
+      </div>
+      <nav>
+        <a href="https://github.com/Emmanuel-tech-hub" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/emmanuel-nyong-24399638b" target="_blank">LinkedIn</a>
+        <a href="mailto:reachmoredigital01@gmail.com" class="cta">Email</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h2>I build intelligent automation systems for real businesses.</h2>
+        <p>I design secure, end-to-end AI workflows that replace repetitive tasks with data-driven processes — used in real estate, finance, and local community operations.</p>
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="https://wa.me/233000000000?text=Hi%20Emmanuel%2C%20I%27m%20interested%20in%20your%20automation%20work" target="_blank" class="btn">Chat on WhatsApp</a>
+        <p style="margin-top:12px;">📍 Abidjan • Core-Team @ SafockAI • Open for short-term automation pilots</p>
+      </div>
+
+      <div>
+        <div class="card">
+          <h3>Focus Areas</h3>
+          <p>AI Workflow Design, Document Intelligence, Voice & Chat Agents, Real-Time Automation</p>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:6px;">Tools: n8n • Claude • Google Vision • Zapier • Postgres • GitHub Pages</p>
+        </div>
+        <div class="card">
+          <h3>Availability</h3>
+          <p>Available for consulting, integrations, and proof-of-concept automation builds.</p>
+          <a href="mailto:reachmoredigital01@gmail.com" class="btn primary" style="margin-top:10px;">Let’s Talk</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <div class="project">
+          <div class="thumb"><img src="screenshots/land-checker.png" alt=""></div>
+          <h3>Land Document Readiness Checker</h3>
+          <p>OCR and scoring system to detect missing details before submission. Built using Google Vision and n8n.</p>
+        </div>
+        <div class="project">
+          <div class="thumb"><img src="screenshots/real-estate-agent.png" alt=""></div>
+          <h3>Real Estate Front Desk Agent</h3>
+          <p>AI front-desk agent that captures and qualifies leads in real time via WhatsApp.</p>
+        </div>
+        <div class="project">
+          <div class="thumb"><img src="screenshots/esim-waitlist.png" alt=""></div>
+          <h3>eSIM Waitlist MVP</h3>
+          <p>Launched in under 48 hours to validate product demand. Built with Claude, HTML/CSS, and GitHub Pages.</p>
+        </div>
+        <div class="project">
+          <div class="thumb"><img src="screenshots/church-followup.png" alt=""></div>
+          <h3>Community Follow-up System</h3>
+          <p>Automated intake and follow-up to ensure consistent engagement in local communities.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Emmanuel Nyong • Built with n8n, Claude & GitHub Pages  
+      <br>
+      <a href="mailto:reachmoredigital01@gmail.com" style="color:var(--accent)">reachmoredigital01@gmail.com</a>
+    </footer>
+  </div>
+</body>
+</html>
