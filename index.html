@@ -1,239 +1,278 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Emmanuel Nyong — SAFOCK AI Architect</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Emmanuel Nyong — Automation & AI Workflow Architect</title>
   <meta name="description" content="Emmanuel Nyong — Core-Team @ SafockAI. Full-Stack & Automation Specialist creating intelligent workflows, document intelligence, and AI-powered agents.">
   <style>
-    :root {
-      --accent: #4dd0e1;
-      --accent2: #8a6cff;
-      --bg1: #050b17;
-      --bg2: #020715;
-      --glass: rgba(255,255,255,0.04);
-      --text: #f1f5ff;
-      --muted: rgba(255,255,255,0.72);
+    /* ===========================
+       Theme variables
+       =========================== */
+    :root{
+      --bg-1:#050b17;
+      --bg-2:#071227;
+      --accent1:#4dd0e1;
+      --accent2:#8a6cff;
+      --muted:rgba(255,255,255,0.78);
+      --card-bg: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --radius:14px;
+      --max-w:1200px;
     }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
+    /* Reset / base */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#ecf6ff}
+    body{
       background:
-        radial-gradient(circle at 20% 10%, rgba(138,108,255,0.12), transparent 30%),
-        radial-gradient(circle at 80% 90%, rgba(77,208,225,0.12), transparent 20%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      padding: 40px 20px 80px;
-      display: flex;
-      justify-content: center;
+        radial-gradient(700px 420px at 10% 18%, rgba(138,108,255,0.12), transparent 18%),
+        radial-gradient(520px 320px at 92% 80%, rgba(77,208,225,0.09), transparent 14%),
+        linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      -webkit-font-smoothing:antialiased;display:flex;justify-content:center;padding:36px 20px 80px;
     }
 
-    .container {
-      width: 100%;
-      max-width: 1080px;
+    /* floating tech elements overlay */
+    body::before{
+      content:"";
+      position:fixed;inset:0;pointer-events:none;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(255,255,255,0.02), transparent 10%),
+        radial-gradient(circle at 85% 85%, rgba(255,255,255,0.01), transparent 8%);
+      mix-blend-mode:overlay;opacity:0.9;
+      animation: drift 24s linear infinite;
+    }
+    @keyframes drift{ from{transform:translateY(0)} to{transform:translateY(-26px)} }
+
+    /* container */
+    .wrap{width:100%;max-width:var(--max-w)}
+    header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:28px}
+    .left{display:flex;align-items:center;gap:16px}
+    /* avatar box: shows uploaded avatar.png if present, else initials */
+    .avatar{
+      width:78px;height:78px;border-radius:16px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#041021;font-size:20px;
+      box-shadow:0 10px 40px rgba(2,6,23,0.7), inset 0 -6px 18px rgba(255,255,255,0.04);
+      position:relative;overflow:hidden;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand h1{margin:0;font-size:1.35rem;letter-spacing:0.2px}
+    .brand p{margin:6px 0 0;color:var(--muted);font-size:0.88rem;max-width:54ch}
+
+    nav.toplinks{display:flex;gap:12px;align-items:center}
+    nav.toplinks a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;border:1px solid transparent;font-weight:500}
+    nav.toplinks a:hover{color:#fff;transform:translateY(-2px)}
+    nav.toplinks a.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#041021;font-weight:700}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+    .panel{background:var(--card-bg);padding:28px;border-radius:var(--radius);border:1px solid var(--glass-border);box-shadow:0 12px 40px rgba(2,6,23,0.65)}
+    .headline{font-size:1.6rem;font-weight:700;margin:0 0 8px}
+    .sub{color:var(--muted);line-height:1.6;margin:0 0 16px}
+
+    .actions{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);
+      background:transparent;color:var(--muted);text-decoration:none;font-weight:600;cursor:pointer;transition:all .16s ease;
+    }
+    .btn:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(2,6,23,0.6)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#041021;border:none}
+    .meta{margin-top:12px;color:var(--muted);font-size:0.92rem}
+
+    /* right column small cards */
+    .cards-col{display:flex;flex-direction:column;gap:14px}
+    .mini{padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .mini h4{margin:0 0 8px}
+    .mini p{margin:0;color:var(--muted);font-size:0.92rem}
+    .tools{margin-top:10px;color:var(--muted);font-size:0.88rem}
+
+    /* animated floating area under primary CTAs */
+    .studio-area{
+      margin-top:18px;border-radius:12px;padding:14px;position:relative;overflow:visible;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)
+    }
+    .floating-grid{display:flex;gap:12px;align-items:center}
+    .float-card{
+      width:120px;height:80px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transform:translateY(0);transition:transform .35s cubic-bezier(.2,.9,.2,1);
+      box-shadow:0 10px 30px rgba(2,6,23,0.45)
+    }
+    .float-card:hover{transform:translateY(-12px) rotate(-1deg)}
+    .float-card small{color:var(--muted);font-size:0.8rem}
+    .float-card strong{display:block;font-size:0.95rem;margin-top:6px}
+
+    /* projects */
+    #projects{margin-top:28px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .project{
+      padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);transition:transform .18s ease,box-shadow .18s ease;position:relative;overflow:hidden;
+    }
+    .project::after{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;background:linear-gradient(135deg, rgba(138,108,255,0.12), rgba(77,208,225,0.08));filter:blur(28px);opacity:.6;transform:rotate(25deg);pointer-events:none}
+    .project:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(2,6,23,0.6)}
+    .project .thumb{height:140px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+    .project h3{margin:8px 0 6px}
+    .project p{color:var(--muted);margin:0 0 10px;font-size:0.95rem}
+    .badge{display:inline-block;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.12);color:var(--muted);font-size:0.8rem;margin-right:8px}
+
+    /* project variants for visual identity */
+    .project.variant-a{border-left:4px solid rgba(77,208,225,0.9)}
+    .project.variant-b{border-left:4px solid rgba(138,108,255,0.95)}
+    .project.variant-c{border-left:4px solid rgba(255,200,80,0.95)}
+    .project.variant-d{border-left:4px solid rgba(120,220,150,0.95)}
+
+    /* footer */
+    footer{margin-top:34px;text-align:center;color:var(--muted);font-size:0.92rem;padding:10px}
+    footer a{color:var(--accent1);text-decoration:none;font-weight:600}
+
+    /* responsiveness */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      nav.toplinks{display:none}
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .avatar {
-      width: 70px;
-      height: 70px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #041021;
-      font-weight: 800;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.5);
-    }
-
-    .brand h1 { margin: 0; font-size: 1.3rem; }
-    .brand p { margin: 5px 0 0; color: var(--muted); font-size: 0.9rem; }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 15px;
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover { color: var(--accent); }
-    nav a.cta {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: #041021;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 10px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 24px;
-      margin-bottom: 50px;
-    }
-
-    .card {
-      background: var(--glass);
-      padding: 30px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-    }
-
-    h2 { margin-top: 0; }
-    p { color: var(--muted); line-height: 1.6; }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 16px;
-      margin-top: 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--muted);
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn.primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: #041021;
-      font-weight: 700;
-    }
-
-    .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    #projects { margin-top: 40px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .project {
-      background: var(--glass);
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.04);
-      padding: 16px;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 60px rgba(0,0,0,0.6);
-    }
-
-    .thumb {
-      height: 150px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.05);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding: 20px;
-    }
-
-    @media(max-width:900px){
-      .hero { grid-template-columns: 1fr; }
-      nav { display: none; }
-    }
+    /* micro animations for icons */
+    .icon{width:18px;height:18px;display:inline-block;vertical-align:middle}
+    .ghost-link{color:var(--muted);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,0.03)}
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
+    <!-- HEADER -->
     <header>
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div class="avatar">EN</div>
+      <div class="left">
+        <div class="avatar" aria-hidden="true">
+          <!-- Put your avatar at /screenshots/avatar.png -->
+          <img src="screenshots/avatar.png" alt="Emmanuel Nyong" onerror="this.style.display='block';this.parentNode.textContent='EN'">
+        </div>
+
         <div class="brand">
           <h1>Emmanuel Nyong</h1>
-          <p>Automation & AI Workflow Architect</p>
+          <!-- full professional line -->
+          <p>
+            Core-Team @ SafockAI • Full-Stack, Automation Specialist | Webflow Developer | Make.com | Zapier & n8n Expert | CRM Workflow Developer. 
+            <br><strong>Safock AI • University of Lagos</strong> • Abidjan, Côte d'Ivoire • Contact info
+          </p>
         </div>
       </div>
-      <nav>
-        <a href="https://github.com/Emmanuel-tech-hub" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/emmanuel-nyong-24399638b" target="_blank">LinkedIn</a>
-        <a href="mailto:reachmoredigital01@gmail.com" class="cta">Email</a>
+
+      <nav class="toplinks" aria-label="top links">
+        <a href="https://github.com/Emmanuel-tech-hub" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/emmanuel-nyong-24399638b" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- email button clickable -->
+        <a href="mailto:reachmoredigital01@gmail.com" class="primary" title="Email Emmanuel">Email</a>
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
-      <div class="card">
-        <h2>I build intelligent automation systems for real businesses.</h2>
-        <p>I design secure, end-to-end AI workflows that replace repetitive tasks with data-driven processes — used in real estate, finance, and local community operations.</p>
-        <a href="#projects" class="btn primary">View Projects</a>
-        <a href="https://wa.me/233000000000?text=Hi%20Emmanuel%2C%20I%27m%20interested%20in%20your%20automation%20work" target="_blank" class="btn">Chat on WhatsApp</a>
-        <p style="margin-top:12px;">📍 Abidjan • Core-Team @ SafockAI • Open for short-term automation pilots</p>
+      <div class="panel">
+        <h2 class="headline">I build intelligent automation systems for real businesses.</h2>
+        <p class="sub">I design secure, end-to-end AI workflows that replace repetitive tasks with data-driven processes — used in real estate, finance, and community operations. I focus on measurable outcomes: time saved, lead capture, and throughput improvements.</p>
+
+        <div class="actions">
+          <a class="btn primary" href="#projects" title="View Projects">View Projects</a>
+          <!-- WhatsApp link updated to your wa.link -->
+          <a class="btn" href="https://wa.link/28jyvh" target="_blank" rel="noopener" title="Chat via WhatsApp">Chat on WhatsApp</a>
+        </div>
+
+        <div class="studio-area" aria-hidden="true">
+          <div style="font-size:0.92rem;color:var(--muted);margin-bottom:8px">Live studio previews — interactive building blocks</div>
+          <div class="floating-grid">
+            <div class="float-card">
+              <small>Data</small>
+              <strong>OCR • Vision</strong>
+            </div>
+            <div class="float-card">
+              <small>Agents</small>
+              <strong>Voice • Chat</strong>
+            </div>
+            <div class="float-card">
+              <small>Flows</small>
+              <strong>n8n • Webhooks</strong>
+            </div>
+            <div class="float-card">
+              <small>Front</small>
+              <strong>React • HTML</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="meta">📍 Abidjan • Core-Team @ SafockAI • Open for short-term automation pilots</div>
       </div>
 
-      <div>
-        <div class="card">
-          <h3>Focus Areas</h3>
+      <aside class="cards-col">
+        <div class="mini">
+          <h4>Focus Areas</h4>
           <p>AI Workflow Design, Document Intelligence, Voice & Chat Agents, Real-Time Automation</p>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:6px;">Tools: n8n • Claude • Google Vision • Zapier • Postgres • GitHub Pages</p>
+          <div class="tools"><strong>Tools:</strong> n8n • Claude • Google Vision • Zapier • Postgres • GitHub Pages • JS • CSS • HTML • React</div>
         </div>
-        <div class="card">
-          <h3>Availability</h3>
+
+        <div class="mini">
+          <h4>Availability</h4>
           <p>Available for consulting, integrations, and proof-of-concept automation builds.</p>
-          <a href="mailto:reachmoredigital01@gmail.com" class="btn primary" style="margin-top:10px;">Let’s Talk</a>
+          <a class="btn primary" href="https://wa.link/28jyvh" target="_blank" rel="noopener">Let's Talk</a>
         </div>
-      </div>
+      </aside>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects">
-      <h2>Selected Projects</h2>
+      <h2 style="margin-bottom:12px">Selected Projects</h2>
       <div class="grid">
-        <div class="project">
-          <div class="thumb"><img src="screenshots/land-checker.png" alt=""></div>
-          <h3>Land Document Readiness Checker</h3>
-          <p>OCR and scoring system to detect missing details before submission. Built using Google Vision and n8n.</p>
-        </div>
-        <div class="project">
-          <div class="thumb"><img src="screenshots/real-estate-agent.png" alt=""></div>
-          <h3>Real Estate Front Desk Agent</h3>
-          <p>AI front-desk agent that captures and qualifies leads in real time via WhatsApp.</p>
-        </div>
-        <div class="project">
-          <div class="thumb"><img src="screenshots/esim-waitlist.png" alt=""></div>
-          <h3>eSIM Waitlist MVP</h3>
-          <p>Launched in under 48 hours to validate product demand. Built with Claude, HTML/CSS, and GitHub Pages.</p>
-        </div>
-        <div class="project">
-          <div class="thumb"><img src="screenshots/church-followup.png" alt=""></div>
-          <h3>Community Follow-up System</h3>
-          <p>Automated intake and follow-up to ensure consistent engagement in local communities.</p>
-        </div>
+        <article class="project variant-a" aria-labelledby="p1">
+          <div class="thumb"><img src="screenshots/land-checker.png" alt="Land Document Readiness Checker" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27120%27><rect width=%27200%27 height=%27120%27 fill=%27%23001422%27/><text x=%2750%25%27 y=%2750%25%27 fill=%27%23bcd%27 font-size=%2712%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27>land-checker.png missing</text></svg>'"></div>
+          <h3 id="p1">Land Document Readiness Checker</h3>
+          <p>OCR + scoring pipeline that flags missing fields & low-confidence text, and routes high-risk documents for manual review. Built with Google Vision + n8n for secure processing.</p>
+          <div style="margin-top:10px"><span class="badge">Compliance</span><span class="badge">OCR</span></div>
+        </article>
+
+        <article class="project variant-b" aria-labelledby="p2">
+          <div class="thumb"><img src="screenshots/real-estate-agent.png" alt="Real Estate Front Desk Agent" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27120%27><rect width=%27200%27 height=%27120%27 fill=%27%23001422%27/><text x=%2750%25%27 y=%2750%25%27 fill=%27%23bcd%27 font-size=%2712%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27>real-estate-agent.png missing</text></svg>'"></div>
+          <h3 id="p2">Real Estate Front Desk Agent</h3>
+          <p>24/7 intelligent front desk that captures & qualifies leads, enriches them with market data, and routes warm prospects to agents via WhatsApp or CRM integrations.</p>
+          <div style="margin-top:10px"><span class="badge">Lead Gen</span><span class="badge">WhatsApp</span></div>
+        </article>
+
+        <article class="project variant-c" aria-labelledby="p3">
+          <div class="thumb"><img src="screenshots/esim-waitlist.png" alt="eSIM Waitlist" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27120%27><rect width=%27200%27 height=%27120%27 fill=%27%23001422%27/><text x=%2750%25%27 y=%2750%25%27 fill=%27%23bcd%27 font-size=%2712%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27>esim-waitlist.png missing</text></svg>'"></div>
+          <h3 id="p3">eSIM Waitlist MVP</h3>
+          <p>Fast-deploy landing & sign-up flow launched in under 48 hours to validate product demand. Simple frontend with reliable signup capture and email pipeline.</p>
+          <div style="margin-top:10px"><span class="badge">MVP</span><span class="badge">Front End</span></div>
+        </article>
+
+        <article class="project variant-d" aria-labelledby="p4">
+          <div class="thumb"><img src="screenshots/church-followup.png" alt="Community Follow-up" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27200%27 height=%27120%27><rect width=%27200%27 height=%27120%27 fill=%27%23001422%27/><text x=%2750%25%27 y=%2750%25%27 fill=%27%23bcd%27 font-size=%2712%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27>church-followup.png missing</text></svg>'"></div>
+          <h3 id="p4">Community Follow-up System</h3>
+          <p>Automated intake and SMS/WhatsApp follow-ups for local groups and NGOs. Ensures consistent engagement and reduces admin overhead.</p>
+          <div style="margin-top:10px"><span class="badge">Community</span><span class="badge">SMS</span></div>
+        </article>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
-      © 2025 Emmanuel Nyong • Built with n8n, Claude & GitHub Pages  
+      © 2025 Emmanuel Nyong • Built with n8n, Claude & GitHub Pages
       <br>
-      <a href="mailto:reachmoredigital01@gmail.com" style="color:var(--accent)">reachmoredigital01@gmail.com</a>
+      <!-- label "Email" which opens mail client -->
+      <a href="mailto:reachmoredigital01@gmail.com" style="display:inline-block;margin-top:8px;color:var(--accent1)">Email</a> •
+      <a href="https://www.linkedin.com/in/emmanuel-nyong-24399638b" target="_blank" rel="noopener">LinkedIn</a> •
+      <a href="https://github.com/Emmanuel-tech-hub" target="_blank" rel="noopener">GitHub</a>
     </footer>
   </div>
+
+  <!-- small JS to add micro interaction or future expansion -->
+  <script>
+    // simple small script: make float cards slowly rotate for subtle motion
+    document.querySelectorAll('.float-card').forEach((el, i) => {
+      const r = (i % 2 === 0) ? 1 : -1;
+      el.animate([
+        { transform: 'translateY(0) rotate(0deg)' },
+        { transform: `translateY(${r * -8}px) rotate(${r * 2}deg)` },
+        { transform: 'translateY(0) rotate(0deg)' }
+      ], { duration: 4500 + i*300, iterations: Infinity, easing: 'ease-in-out' });
+    });
+  </script>
 </body>
 </html>
